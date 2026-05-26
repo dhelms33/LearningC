@@ -2,9 +2,17 @@
 #include <stdlib.h> 
 
 int main() {
-    printf("Fetching current directory contents via C: \n")
+    char command[100];
 
-    linux system("ls -la");
-
+    while (1) {
+        printf("myshell> ");
+        fgets(command, sizeof(command), stdin);
+        command[strcspn(command, "\n")] = 0; // Remove newline char
+    if (strcmp(command, "exit") == 0) {
+        break; //Exit the shell
+        }
+    system(command);
+    }
+    return 0;
 
 }
